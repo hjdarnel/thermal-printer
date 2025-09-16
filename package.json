@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@types/esc-pos-encoder": "^1.3.4",
+    "@types/ms": "^2.1.0",
     "@types/node": "^20.16.1",
     "@types/react": "^18",
     "@types/react-dom": "^18",

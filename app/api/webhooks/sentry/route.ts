@@ -5,12 +5,11 @@ export async function POST(request: Request) {
   console.log(`[🔔 WEBHOOK] GET request received`);
   // convert the request to an object so we can play it back later
   const body = await request.json();
-  if(body)  {
+  if (body) {
     writeFile(`./requests/${Date.now()}.json`, JSON.stringify(body, null, 2));
   }
 
   console.log(body);
-  await takeScreenshot(body.data.issue.id);
+  await takeScreenshot();
   return new Response('OK');
-
- }
+}

@@ -19,24 +19,7 @@ export default function Home() {
           <Chat />
         </div>
       </div>
-      <TestPrinter></TestPrinter>
-      <p>
-        THANKS EVERYONE{' '}
-        <a
-          target="_blank"
-          href="https://x.com/wesbos/status/1825559690216132726"
-        >
-          [Photo Results]
-        </a>
-        <a
-          target="_blank"
-          href="https://x.com/wesbos/status/1826234351740240248"
-        >
-          [Text Results]
-        </a>
-      </p>
-      {/* <TestPrinter/> */}
-      {/* <PhotoBooth /> */}
+      <TestPrinter />
     </main>
   );
 }
