@@ -1,4 +1,5 @@
 'use client';
+import { takeScreenshot } from '@/actions/screenshot';
 import React from 'react';
 
 export default function TodoPrinter() {
@@ -40,18 +41,21 @@ export default function TodoPrinter() {
     return { groups };
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const { groups, plainItems } = parseInput(value);
     const data = encodeURIComponent(
       JSON.stringify({ title, groups, plainItems })
     );
-    window.location.href = `/print/todo?data=${data}`;
+    // window.location.href = `/print/todo?data=${data}`;
+    const fd = new FormData();
+    fd.append('path', 'print/todo');
+    fd.append('searchParams', data);
+    await takeScreenshot(fd);
   }
 
   return (
     <div>
-      <h3 className="text-lg font-bold mb-2">Quick Todo List Builder</h3>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-2 items-center"
