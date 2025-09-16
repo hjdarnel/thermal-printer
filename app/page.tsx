@@ -1,8 +1,8 @@
-import Chat from "@/components/Chat";
-import { ChatForm } from "@/components/ChatForm";
-import { PhotoBooth } from "@/components/PhotoBooth";
-import TestPrinter from "@/components/Test";
-import Image from "next/image";
+import Chat from '@/components/Chat';
+import { ChatForm } from '@/components/ChatForm';
+import { PhotoBooth } from '@/components/PhotoBooth';
+import TestPrinter from '@/components/Test';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -19,12 +19,19 @@ export default function Home() {
           <Chat />
         </div>
       </div>
+      <TestPrinter></TestPrinter>
       <p>
-        THANKS EVERYONE{" "}
-        <a target="_blank" href="https://x.com/wesbos/status/1825559690216132726">
+        THANKS EVERYONE{' '}
+        <a
+          target="_blank"
+          href="https://x.com/wesbos/status/1825559690216132726"
+        >
           [Photo Results]
         </a>
-        <a target="_blank" href="https://x.com/wesbos/status/1826234351740240248">
+        <a
+          target="_blank"
+          href="https://x.com/wesbos/status/1826234351740240248"
+        >
           [Text Results]
         </a>
       </p>
@@ -33,4 +40,3 @@ export default function Home() {
     </main>
   );
 }
-

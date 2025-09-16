@@ -1,4 +1,4 @@
-"use server";
+'use server';
 import { client } from '@/lib/printer';
 import { loadImage } from 'canvas';
 import EscPosEncoder from 'esc-pos-encoder';
@@ -14,21 +14,24 @@ export async function testPrinter(formData: FormData) {
     .encode();
 
   client.write(result);
+  cutPaper();
 }
-
 
 export async function printImage(base64String: string) {
   console.log('printing image');
   const image = await loadImage(base64String);
   let result = encoder
-  .initialize()
-  .image(image, image.width, image.height, 'floydsteinberg')
-  .encode();
+    .initialize()
+    .image(image, image.width, image.height, 'floydsteinberg')
+    .encode();
   client.write(result);
+  cutPaper();
 }
 
 export async function cutPaper() {
   let result = encoder
+    .newline()
+    .newline()
     .newline()
     .newline()
     .newline()
