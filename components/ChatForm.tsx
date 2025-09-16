@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { printMessage } from "@/lib/chat";
-import { useActionState } from "react";
+import { printMessage } from '@/lib/chat';
+import { useActionState } from 'react';
 
 export function ChatForm() {
   const [state, formAction] = useActionState(printMessage, {});
@@ -13,7 +13,7 @@ export function ChatForm() {
         name="name"
         required
         maxLength={25}
-        defaultValue={state.name || ""}
+        defaultValue={state.name || ''}
       />
       <input
         placeholder="Message. Be nice, AI will judge"

@@ -1,8 +1,8 @@
+import React from 'react';
 import Chat from '@/components/Chat';
-import { ChatForm } from '@/components/ChatForm';
 import { PhotoBooth } from '@/components/PhotoBooth';
 import TestPrinter from '@/components/Test';
-import Image from 'next/image';
+import TodoPrinter from '@/components/client/TodoPrinter';
 
 export default function Home() {
   return (
@@ -18,8 +18,12 @@ export default function Home() {
           <p className="text-center">Send a message</p>
           <Chat />
         </div>
+        <div>
+          <p className="text-center">Create a Todo List</p>
+          <TodoPrinter />
+        </div>
+        <TestPrinter />
       </div>
-      <TestPrinter />
     </main>
   );
 }

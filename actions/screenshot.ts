@@ -12,15 +12,26 @@ const encoder = new EscPosEncoder();
 //   client.write(result);
 //   // }
 
-export async function takeScreenshot() {
+export async function takeScreenshot(formData: FormData) {
+  const path = formData.get('path')?.toString() ?? 'test';
+  const searchParams = formData.get('searchParams')?.toString() ?? '';
+  console.log(formData);
   const browser = await chromium.launch();
   const page = await browser.newPage();
   console.log(`Created browser and page`);
-  await page.goto(`http://localhost:3000/test`);
-  const ss = (await page.locator('.issue').screenshot()).toString('base64url');
+  const url = `http://localhost:3000/${path}${
+    searchParams ? `?${new URLSearchParams([['data', searchParams]])}` : ''
+  }`;
+  console.log(`Navigating to ${url}`);
+  await page.goto(url);
+
+  const ss = (await page.locator('.screenshot-body').screenshot()).toString(
+    'base64url'
+  );
   console.log('Screenshot taken');
   const base64URL = `data:image/png;base64,${ss}`;
   await browser.close();
+
   const image = await loadImage(base64URL);
   console.log(image.naturalWidth, image.naturalHeight);
   const width = image.naturalWidth;
@@ -35,10 +46,12 @@ export async function takeScreenshot() {
     .newline()
     .newline()
     .newline()
+    .newline()
+    .newline()
     .cut()
     .encode();
   // Encode the image
   console.log(`Wrtiting to printer...`);
-  client.write(result);
+  client?.write(result);
   return;
 }
