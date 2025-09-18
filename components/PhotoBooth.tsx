@@ -38,6 +38,7 @@ export function PhotoBooth() {
       const video = videoRef.current;
       const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
+      if (!context) return;
       const aspectRatio = video.videoWidth / video.videoHeight;
       const width = 600;
       const height = Math.floor(width / aspectRatio / 8) * 8;

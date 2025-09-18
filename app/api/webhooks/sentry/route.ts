@@ -10,6 +10,6 @@ export async function POST(request: Request) {
   }
 
   console.log(body);
-  await takeScreenshot();
+  // await takeScreenshot();
   return new Response('OK');
 }

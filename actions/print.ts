@@ -13,7 +13,7 @@ export async function testPrinter(formData: FormData) {
     .newline()
     .encode();
 
-  client.write(result);
+  client?.write(result);
   cutPaper();
 }
 
@@ -24,7 +24,7 @@ export async function printImage(base64String: string) {
     .initialize()
     .image(image, image.width, image.height, 'floydsteinberg')
     .encode();
-  client.write(result);
+  client?.write(result);
   cutPaper();
 }
 
@@ -39,5 +39,5 @@ export async function cutPaper() {
     .newline()
     .cut('full')
     .encode();
-  client.write(result);
+  client?.write(result);
 }

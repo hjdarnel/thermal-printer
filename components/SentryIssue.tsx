@@ -1,6 +1,7 @@
 import { takeScreenshot } from '@/actions/screenshot';
 import { getIssueTags } from '@/lib/sentry';
 import ms from 'ms';
+import Image from 'next/image';
 
 export async function SentryIssue() {
   const firstSeen = new Date(1);
@@ -18,7 +19,7 @@ export async function SentryIssue() {
       <form action={takeScreenshot}>
         <div className="grid grid-cols-2 place-content-center items-center">
           <button type="submit">
-            <img src="/sentry.svg" alt="Sentry" className="w-[200px]" />
+            <Image src="/sentry.svg" alt="Sentry" className="w-[200px]" />
           </button>
           <p className="text-xxs text-right">short</p>
         </div>
