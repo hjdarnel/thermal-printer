@@ -15,7 +15,7 @@ export interface Props {
 export async function TodoList({ title, groups, plainItems, data }: Props) {
   return (
     <div
-      className="w-[600px] rounded-xl grid gap-5 screenshot-body pr-4 bg-white wrap"
+      className="w-[600px] rounded-xl grid gap-5 screenshot-body pr-4 mb-12 bg-white wrap"
       style={{
         filter: 'invert(0)',
         overflowWrap: 'anywhere'

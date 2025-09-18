@@ -77,7 +77,7 @@ export default function TodoPrinter() {
           type="submit"
           className="bg-black text-white px-4 py-2 rounded mt-2"
         >
-          Go to Todo
+          Print Todo List
         </button>
       </form>
     </div>

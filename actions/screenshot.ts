@@ -36,7 +36,7 @@ export async function takeScreenshot(formData: FormData) {
   console.log(image.naturalWidth, image.naturalHeight);
   const width = image.naturalWidth;
   const aspectRatio = image.naturalWidth / image.naturalHeight;
-  const height = Math.floor(width / aspectRatio / 8) * 8;
+  const height = Math.floor(width / aspectRatio / 8) * 8 + 24;
   image.height = height;
   let result = encoder
     .initialize()

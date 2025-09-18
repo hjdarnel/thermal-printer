@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import EscPosEncoder from 'esc-pos-encoder';
-import { cutPaper, printImage } from '@/actions/print';
+import {  printImage } from '@/actions/print';
 const encoder = new EscPosEncoder();
 
 async function useWebcam() {
@@ -21,16 +21,13 @@ async function useWebcam() {
 export function PhotoBooth() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
 
   async function startWebcam() {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    console.log(await navigator.mediaDevices.enumerateDevices());
+    const stream = await navigator.mediaDevices?.getUserMedia({ video: true });
     if (videoRef.current) {
       videoRef.current.srcObject = stream;
     }
-    setMediaStream(stream);
   }
 
   async function captureImage() {
@@ -83,15 +80,17 @@ export function PhotoBooth() {
   useEffect(() => {
     startWebcam();
   }, []);
+
   return (
     <div className="">
-      <video
+
+      {videoRef.current ? (<video
         playsInline
         muted
         ref={videoRef}
         autoPlay
         className="rounded-xl"
-      ></video>
+      ></video>) : (<div>Loading...</div>)}  
       <canvas ref={canvasRef} className="hidden"></canvas>
       <div className="flex justify-center gap-2 m-2">
         <button onClick={startWebcam}>startWebcam</button>
