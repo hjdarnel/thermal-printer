@@ -1,5 +1,5 @@
 'use server';
-import { client, encoder } from './printer';
+import { sendToPrinter, encoder } from './printer';
 
 const MAX_LINE_LENGTH = 48;
 
@@ -61,7 +61,7 @@ export async function printPlaintext(_prevState: any, data: FormData) {
     .cut('full')
     .encode();
   
-  client?.write(encodedMessage);
+  await sendToPrinter(encodedMessage);
 
   return {
     body: `Printed message: ${message}`,

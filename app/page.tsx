@@ -1,5 +1,5 @@
 import React from 'react';
-import { PhotoBooth } from '@/components/PhotoBooth';
+// import { PhotoBooth } from '@/components/PhotoBooth';
 import TestPrinter from '@/components/Test';
 import TodoPrinter from '@/components/TodoPrinter';
 import { PlainText } from '@/components/PlainText';
@@ -12,10 +12,10 @@ export default function Home() {
       <h2 className="text-xl md:text-2xl">JavaScript Thermal Printer!</h2>
       <p className="text-sm md:text-base mb-4">Type something and it will print on my computer</p>
       <div className="grid gap-4 md:gap-10 m-2 md:m-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="w-full max-w-sm mx-auto">
+        {/* <div className="w-full max-w-sm mx-auto">
           <p className="text-center mb-3">Send a Photo</p>
           <PhotoBooth />
-        </div>
+        </div> */}
         <div className="w-full max-w-sm mx-auto">
           <p className="text-center mb-3">Upload Any Image</p>
           <ImageUpload />

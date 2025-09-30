@@ -1,35 +1,35 @@
 'use server';
-import { client } from '@/lib/printer';
+import { sendToPrinter } from '@/lib/printer';
 import { loadImage } from 'canvas';
 import EscPosEncoder from 'esc-pos-encoder';
 const encoder = new EscPosEncoder();
 
 export async function testPrinter(formData: FormData) {
-  console.log('testng printer');
+  console.log('testing printer');
 
-  let result = encoder
+  const result = encoder
     .initialize()
     .text(`Testing ${new Date()}`)
     .newline()
     .encode();
 
-  client?.write(result);
-  cutPaper();
+  await sendToPrinter(result);
+  await cutPaper();
 }
 
 export async function printImage(base64String: string) {
   console.log('printing image');
   const image = await loadImage(base64String);
-  let result = encoder
+  const result = encoder
     .initialize()
     .image(image, image.width, image.height, 'floydsteinberg')
     .encode();
-  client?.write(result);
-  cutPaper();
+  await sendToPrinter(result);
+  await cutPaper();
 }
 
 export async function cutPaper() {
-  let result = encoder
+  const result = encoder
     .newline()
     .newline()
     .newline()
@@ -39,5 +39,5 @@ export async function cutPaper() {
     .newline()
     .cut('full')
     .encode();
-  client?.write(result);
+  await sendToPrinter(result);
 }

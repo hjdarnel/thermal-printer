@@ -2,7 +2,6 @@
 
 import { useRef, useState, useCallback } from 'react';
 import { printImage } from '@/actions/print';
-import NextImage from 'next/image';
 
 export function ImageUpload() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -152,7 +151,7 @@ export function ImageUpload() {
               />
             </svg>
             <div className="text-sm md:text-base text-gray-600">
-              <span className="font-medium">Click to upload</span> or drag and drop
+              <span className="font-medium">Click to take picture, upload</span> or drag and drop
             </div>
             <div className="text-xs md:text-sm text-gray-500">
               Any image type (PNG, JPG, GIF, etc.)
@@ -164,7 +163,8 @@ export function ImageUpload() {
       {selectedImage && (
         <div className="mt-4 text-center">
           <div className="text-sm text-green-600 mb-2">✅ Image sent to printer!</div>
-          <NextImage
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={selectedImage}
             alt="Processed for printing"
             className="max-w-full h-auto mx-auto rounded border"

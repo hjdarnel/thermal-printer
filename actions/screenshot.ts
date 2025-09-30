@@ -1,6 +1,6 @@
 'use server';
 import { chromium } from 'playwright';
-import { client } from '../lib/printer';
+import { sendToPrinter } from '../lib/printer';
 import EscPosEncoder from 'esc-pos-encoder';
 import { loadImage } from 'canvas';
 
@@ -51,7 +51,7 @@ export async function takeScreenshot(formData: FormData) {
     .cut()
     .encode();
   // Encode the image
-  console.log(`Wrtiting to printer...`);
-  client?.write(result);
+  console.log(`Writing to printer...`);
+  await sendToPrinter(result);
   return;
 }

@@ -1,7 +1,7 @@
 'use server';
 import { headers } from 'next/headers';
 // import { checkSWF } from './sfw';
-import { client, encoder } from './printer';
+import { sendToPrinter, encoder } from './printer';
 import { revalidatePath } from 'next/cache';
 
 let count = 0;
@@ -46,7 +46,7 @@ export async function printMessage(_prevState: any, data: FormData) {
     .text(` ${message}`)
     .newline()
     .encode();
-  client?.write(encodedMessage);
+  await sendToPrinter(encodedMessage);
   count++;
 
   revalidatePath('/chat');
